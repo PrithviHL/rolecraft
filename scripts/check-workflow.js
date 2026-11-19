@@ -25,7 +25,7 @@ const results = {
   'Tailor Resume': { done: true, message: { content: JSON.stringify({
     job_title: 'Data Analyst', company_name: 'Example & Co.', ats_keywords: { hard_skills_tools: ['SQL'] }, review_notes: [], name: 'Alex Rivera', contact: 'alex@example.com | Portland, OR', sections: [
       { heading: 'Summary', lines: ['Data analyst with experience building SQL reports and improving reporting workflows.'] },
-      { heading: 'Experience', lines: ['Data Analyst | Example & Co. | 2022–Present', '', '  • Built SQL reports that reduced weekly reporting time by 20%.'] },
+      { heading: 'Experience', lines: ['Data Analyst | Example & Co. | 2022–Present', '\n  • Built SQL reports that reduced weekly reporting time by 20%.'] },
       { heading: 'Certifications', lines: ['Example Certificate'] },
       { heading: 'Skills', lines: ['SQL, reporting, data analysis'] },
     ],

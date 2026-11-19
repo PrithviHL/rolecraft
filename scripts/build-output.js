@@ -32,7 +32,7 @@ function filenameSegment(value, fallback) {
 }
 
 function sourceLine(value) {
-  if (typeof value !== 'string' || value.length > 750 || /[\r\n]/.test(value)) {
+  if (typeof value !== 'string' || value.length > 750) {
     throw new Error('Invalid resume line. The model must return one string per line.');
   }
   const leading = value.match(/^[ \t]*/)[0].replace(/\t/g, '  ');
@@ -57,7 +57,10 @@ for (const section of draft.sections) {
   }
   resume.sections.push({
     heading: plainText(singleLine(section.heading, 'section heading', 80)).toUpperCase(),
-    lines: section.lines.map(sourceLine),
+    lines: section.lines.flatMap(line => {
+      if (typeof line !== 'string') throw new Error('Invalid resume line. Expected text.');
+      return line.split(/\r\n|[\r\n\u2028\u2029]/u).map(sourceLine);
+    }),
   });
 }
 
