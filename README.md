@@ -1,10 +1,10 @@
 # RoleCraft
 
-RoleCraft tailors a Word resume to a job description and prepares a personalized outreach draft for each named hiring-team contact. One submission returns a ZIP containing the tailored `.docx`, `outreach-drafts.txt`, and `resume-review.txt`.
+RoleCraft is a local, DOCX-only workflow for tailoring a Word resume to a job description and drafting hiring-team outreach. It edits the original Word template to retain heading sizes, spacing, indentation, bullet styles, margins, and links. One submission returns a ZIP with the tailored resume, outreach drafts, and review notes.
 
-## Try the public demo
+[Try the public demo](https://rolecraft-atr5.onrender.com/#example) · [Download the fictional sample ZIP](https://rolecraft-atr5.onrender.com/sample-application.zip)
 
-Explore a fictional application and download a complete sample ZIP. The public site displays sample data. Real resumes are processed locally with n8n and Ollama. [RoleCraft demo](https://rolecraft-atr5.onrender.com/)
+The two-page sample includes a formatted Word resume, two outreach drafts, and review notes. The Render site serves the example. Your own resume is processed on your computer by n8n, the Word template service, and Ollama.
 
 ## Run locally on a Mac
 
@@ -24,9 +24,9 @@ Explore a fictional application and download a complete sample ZIP. The public s
 
 ## How it works
 
-- The local template service reads the Word document and preserves its styles, margins, heading sizes, tabs, links, and bullet formatting. It highlights matching source skills and ranks recognized experience bullets and projects against the job description. Reordering and filtering can shift page breaks.
-- n8n sends resume text and the job description to local Ollama for structured review and outreach. The Word document uses source-backed text and formatting. Gmail is disabled and disconnected.
-- The production form accepts `.docx` only. A PDF must be converted to an editable Word document before upload. Use the original Word file when available.
+- The local template service reads the Word document and preserves its styles, margins, heading sizes, tabs, links, and bullet formatting. It keeps matching skills in recognized categories and ranks existing experience bullets and project blocks against the job description. Titles, dates, accomplishments, and metrics keep their original wording. Reordering and filtering can shift page breaks.
+- n8n uses two structured calls to local Ollama for role metadata, review notes, and outreach drafts. The Word document uses source-backed text and formatting. Gmail is disabled and disconnected.
+- Upload the original editable `.docx` when available. This bypasses PDF text extraction and OCR.
 
 ## Project files
 
