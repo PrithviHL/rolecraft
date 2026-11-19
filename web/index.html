@@ -20,7 +20,7 @@
     <div class="hero-copy">
       <p class="eyebrow">Local AI for job applications</p>
       <h1 id="title">Resume tailoring <em>&amp; hiring outreach.</em></h1>
-      <p class="intro">Give RoleCraft a resume, a job description, and the people you want to contact. Get an editable Word resume tailored to the role and a draft message for each contact.</p>
+      <p class="intro">Upload your Word resume, paste a job description, and add the people you want to contact. Get a tailored Word document that retains your formatting, plus a draft message for each contact.</p>
       <div class="actions"><a class="button primary" href="#example">Explore the example</a><a class="button secondary" href="#implementation">Set up locally</a></div>
       <ul class="tech" aria-label="Core technologies"><li>n8n</li><li>Ollama</li><li>Qwen2.5</li><li>Docker</li></ul>
     </div>
@@ -38,21 +38,21 @@
 
   <section class="section example" id="example" aria-labelledby="demo-title">
     <div class="shell">
-      <div class="section-heading"><p class="eyebrow">Example</p><h2 id="demo-title">See a sample application</h2><p>Explore a fictional candidate’s resume and outreach drafts. The public demo uses sample data.</p></div>
+      <div class="section-heading"><p class="eyebrow">Example</p><h2 id="demo-title">See a sample application</h2><p>See how an editable Word resume becomes a tailored application package. This example uses fictional data.</p></div>
       <div class="demo-grid">
         <section class="panel" aria-labelledby="input-title">
           <h3 id="input-title">Application inputs</h3>
-          <dl><dt>Candidate</dt><dd>Alex Rivera</dd><dt>Target role</dt><dd>Data Analyst · Example &amp; Co.</dd><dt>Job description</dt><dd>Build SQL reports and improve recurring reporting workflows.</dd><dt>Hiring team</dt><dd>Riley Chen, Jordan Singh</dd></dl>
+          <dl><dt>Candidate</dt><dd>Alex Rivera · Word resume (.docx)</dd><dt>Target role</dt><dd>Data Analyst · Example &amp; Co.</dd><dt>Job description</dt><dd>Build SQL reports, automate recurring reporting, and validate incoming data.</dd><dt>Hiring team</dt><dd>Riley Chen, Jordan Singh</dd></dl>
           <button class="button primary" id="load" type="button" aria-controls="results">View sample results</button>
         </section>
         <section class="panel result" aria-labelledby="output-title">
           <h3 id="output-title">Application drafts</h3>
           <p id="status" role="status">Open the sample results to see how the application was tailored.</p>
           <div id="results" hidden>
-            <details open><summary>Tailored resume</summary><p>Data analyst with experience building SQL reports and improving reporting workflows.</p><p>Built SQL reports that reduced weekly reporting time by 20%.</p></details>
+            <details open><summary>Tailored resume</summary><p>The resume puts SQL, Python, and reporting automation up front while retaining the original Word formatting.</p><p>Highlighted result: Built SQL reports that reduced weekly reporting time by 20%.</p></details>
             <details><summary>Outreach drafts</summary><div id="messages"></div></details>
             <details><summary>Resume review</summary><div id="review"></div></details>
-            <a class="button secondary" href="./sample-application.zip" download>Download sample ZIP</a>
+            <ul class="package-files"><li><strong>Tailored resume</strong><span>.docx</span></li><li><strong>Outreach drafts</strong><span>.txt</span></li><li><strong>Resume review notes</strong><span>.txt</span></li></ul><a class="button primary" href="./sample-application.zip" download>Download sample ZIP</a>
           </div>
         </section>
       </div>
@@ -60,8 +60,8 @@
   </section>
 
   <section class="section shell" id="implementation" aria-labelledby="setup-title">
-    <div class="section-heading"><p class="eyebrow">Implementation</p><h2 id="setup-title">Run RoleCraft on your computer</h2><p>Your n8n workflow sends real application data to Ollama locally. It uses separate model calls for the resume and outreach, then validates and packages the drafts.</p></div>
-    <ol class="workflow" aria-label="Workflow architecture"><li>Form submission</li><li>PDF text extraction</li><li>Two Ollama calls</li><li>Validate and export</li></ol>
+    <div class="section-heading"><p class="eyebrow">Implementation</p><h2 id="setup-title">Run RoleCraft on your computer</h2><p>Your n8n workflow sends real application data to Ollama locally. It prepares a tailored Word document from your original template, then packages it with outreach drafts and review notes.</p></div>
+    <ol class="workflow" aria-label="Workflow architecture"><li>Form submission</li><li>Word template preparation</li><li>Two Ollama calls</li><li>Validate and export</li></ol>
     <ol class="steps">
       <li><h3>Install the prerequisites</h3><p>Install Git, <a href="https://docs.docker.com/desktop/">Docker Desktop</a>, and <a href="https://ollama.com/download">Ollama</a>. Start Docker Desktop and Ollama.</p></li>
       <li><h3>Clone and start the project</h3><div class="terminal"><div class="terminal-bar"><span>Terminal</span><button id="copy" type="button">Copy commands</button></div><pre><code id="commands">git clone https://github.com/PrithviHL/rolecraft.git
@@ -69,7 +69,7 @@ cd rolecraft
 ollama pull qwen2.5:3b
 docker compose up -d</code></pre></div><p id="copy-status" role="status"></p></li>
       <li><h3>Import the n8n workflow</h3><p>Go to <a href="http://localhost:5678/">localhost:5678</a> and set up the local owner account if prompted. Create a workflow, choose <strong>Import from File</strong>, select <code>recruiting-workflow.json</code>, and save.</p></li>
-      <li><h3>Submit and review</h3><p>Click <strong>Execute workflow</strong> to open the test form. Upload a PDF with selectable text, paste the job description, and add hiring-team names. Review the Word resume and outreach drafts before sending anything. Publish the workflow in n8n to use the local production form.</p><a class="button secondary" href="http://localhost:5678/form/recruiting-drafts">Open local production form</a></li>
+      <li><h3>Submit and review</h3><p>Click <strong>Execute workflow</strong> to open the test form. Upload your original editable Word file (.docx), paste the job description, and add hiring-team names. The Word template keeps headings, spacing, and indentation. The form accepts DOCX only. Download the ZIP and review the Word resume and outreach drafts before sending anything. Publish the workflow in n8n to use the local production form.</p><a class="button secondary" href="http://localhost:5678/form/recruiting-drafts">Open local production form</a></li>
     </ol>
   </section>
 </main>

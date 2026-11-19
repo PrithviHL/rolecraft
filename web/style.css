@@ -77,3 +77,8 @@ footer { border-top: 1px solid var(--line); color: var(--muted); }
 @media (max-width: 720px) { .hero, .demo-grid { grid-template-columns: 1fr; } .scene { min-height: 280px; } .object { width: 165px; } .workflow { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 400px) { .shell { width: calc(100% - 1.5rem); } .nav-links { gap: .65rem; font-size: .9rem; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .object { animation: none; transform: rotateX(11deg) rotateY(-16deg) rotateZ(-4deg); } }
+
+.package-files { list-style: none; padding: 0; margin: 1rem 0; border: 1px solid var(--line); border-radius: .65rem; }
+.package-files li { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .65rem .8rem; }
+.package-files li + li { border-top: 1px solid var(--line); }
+.package-files span { color: var(--accent); font: .85rem ui-monospace, monospace; }

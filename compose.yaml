@@ -1,6 +1,8 @@
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n:2.46.7
+    depends_on:
+      - rolecraft-docx-template
     ports:
       - "127.0.0.1:5678:5678"
     environment:
@@ -12,6 +14,15 @@ services:
       TZ: America/New_York
     volumes:
       - recruiting_n8n:/home/node/.n8n
+
+  rolecraft-docx-template:
+    image: python:3.12-slim
+    command: ["python", "-B", "/app/template_service.py"]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    volumes:
+      - ./scripts/template_service.py:/app/template_service.py:ro
 
 volumes:
   recruiting_n8n:
