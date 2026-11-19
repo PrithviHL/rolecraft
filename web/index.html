@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="RoleCraft tailors resumes and drafts hiring outreach with n8n and local Ollama. Explore a sample application.">
+<title>RoleCraft · Resume and outreach</title>
+<link rel="stylesheet" href="./style.css">
+<script src="./app.js" defer></script>
+</head>
+<body>
+<header><div class="shell nav"><a class="wordmark" href="./"><span class="mark" aria-hidden="true">R</span> RoleCraft</a><a href="https://github.com/PrithviHL/rolecraft">View source</a></div></header>
+<main class="shell">
+<section class="hero" aria-labelledby="title">
+<div><p class="eyebrow">Resume &amp; outreach workspace</p><h1 id="title">Write for the role<br>you want.</h1><p class="intro">Tailor a resume to a job description and prepare a personal message for each member of the hiring team.</p></div>
+<div class="local"><h2>Run with your own resume</h2><p>Start n8n and Ollama on your computer, then open your RoleCraft form. Your resume is processed locally.</p><a class="button secondary" href="http://localhost:5678/form/recruiting-drafts">Open local form</a><a class="setup-link" href="https://github.com/PrithviHL/rolecraft#run-locally-on-a-mac">Local setup</a></div>
+</section>
+<section class="workspace" aria-labelledby="demo-title">
+<div class="workspace-head"><div><h2 id="demo-title">Try a sample application</h2><p>This demo uses fictional inputs and example outputs.</p></div></div>
+<div class="grid">
+<section class="panel" aria-labelledby="input-title">
+<h3 id="input-title">Application inputs</h3>
+<dl><dt>Candidate</dt><dd>Alex Rivera</dd><dt>Target role</dt><dd>Data Analyst · Example &amp; Co.</dd><dt>Job description</dt><dd>Build SQL reports and improve recurring reporting workflows.</dd><dt>Hiring team</dt><dd>Riley Chen, Jordan Singh</dd></dl>
+<button class="button primary" id="load" type="button">View sample results</button>
+</section>
+<section class="panel result" aria-labelledby="output-title">
+<h3 id="output-title">Application drafts</h3>
+<p id="status" role="status">View the sample results to inspect the resume and messages.</p>
+<div id="results" hidden>
+<details open><summary>Tailored resume</summary><p>Data analyst with experience building SQL reports and improving reporting workflows.</p><p>Built SQL reports that reduced weekly reporting time by 20%.</p></details>
+<details><summary>Outreach drafts</summary><div id="messages"></div></details>
+<details><summary>Resume review</summary><div id="review"></div></details>
+<a class="button secondary" href="./sample-application.zip" download>Download sample ZIP</a>
+</div>
+</section>
+</div>
+</section>
+</main>
+<footer class="shell">Built with n8n, Ollama, and structured prompts.</footer>
+</body>
+</html>

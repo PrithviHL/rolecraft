@@ -1,0 +1,9 @@
+services:
+  - type: web
+    runtime: static
+    name: rolecraft
+    buildCommand: bash scripts/build-demo.sh
+    staticPublishPath: web
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"

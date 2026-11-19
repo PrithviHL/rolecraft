@@ -1,4 +1,4 @@
-# AI Recruiting Workflow
+# RoleCraft
 
 Submit one text-based PDF resume, a job description, and up to eight hiring-team names. The n8n form returns a ZIP with an editable Word resume, one DM draft per unique name, and a resume review report. The Gmail node is disabled and disconnected. Review and send drafts manually.
 
@@ -69,3 +69,9 @@ docker compose config --quiet
 ```
 
 The check writes a synthetic ZIP under the ignored `.artifacts/` directory. It requires no model or API credentials. Use the form with Ollama running to check the complete workflow. Resume PDFs and output drafts contain personal data and should stay out of the repository.
+
+## Public Render demo
+
+The `web/` app demonstrates the workflow with fictional data and a downloadable example ZIP. For real applications, start n8n and Ollama locally and publish the n8n workflow on your computer. The demo's **Open local form** button opens that local production form.
+
+Deploy the demo on Render as a **Static Site** from this GitHub repo. The Blueprint is in `render.yaml`. For manual setup, use `bash scripts/build-demo.sh` as the build command and `web` as the publish directory. The build uses the synthetic fixture in the mock workflow check. It does not require secrets or model access.
