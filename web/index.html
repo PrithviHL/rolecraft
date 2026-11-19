@@ -3,76 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="RoleCraft is a local AI workflow for resume tailoring and personalized hiring outreach.">
-<title>RoleCraft · AI resume and outreach</title>
+<meta name="description" content="RoleCraft tailors resumes and drafts hiring outreach with n8n and local Ollama. Explore a sample application.">
+<title>RoleCraft · Resume and outreach</title>
 <link rel="stylesheet" href="./style.css">
 <script src="./app.js" defer></script>
 </head>
 <body>
-<header class="site-header">
-  <nav class="shell nav" aria-label="Main navigation">
-    <a class="wordmark" href="#overview"><span class="mark" aria-hidden="true">R</span>RoleCraft</a>
-    <div class="nav-links"><a href="#example">Example</a><a href="#implementation">Setup</a><a href="https://github.com/PrithviHL/rolecraft">GitHub</a></div>
-  </nav>
-</header>
-<main>
-  <section class="shell hero" id="overview" aria-labelledby="title">
-    <div class="hero-copy">
-      <p class="eyebrow">Local AI for job applications</p>
-      <h1 id="title">Resume tailoring <em>&amp; hiring outreach.</em></h1>
-      <p class="intro">Give RoleCraft a resume, a job description, and the people you want to contact. Get an editable Word resume tailored to the role and a draft message for each contact.</p>
-      <div class="actions"><a class="button primary" href="#example">Explore the example</a><a class="button secondary" href="#implementation">Set up locally</a></div>
-      <ul class="tech" aria-label="Core technologies"><li>n8n</li><li>Ollama</li><li>Qwen2.5</li><li>Docker</li></ul>
-    </div>
-    <div class="scene" aria-hidden="true">
-      <div class="scene-grid"></div>
-      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-      <div class="object">
-        <div class="sheet sheet-back"></div>
-        <div class="sheet sheet-mid"></div>
-        <div class="sheet sheet-front"><span class="paper-label">TAILORED RESUME</span><span class="paper-name">Alex Rivera</span><div class="paper-lines"><i></i><i></i><i></i><i></i></div><span class="paper-format">DOCX</span></div>
-        <div class="mini-card"><span class="mini-icon">✉</span><span>Outreach draft<small>Ready for review</small></span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section example" id="example" aria-labelledby="demo-title">
-    <div class="shell">
-      <div class="section-heading"><p class="eyebrow">Example</p><h2 id="demo-title">See a sample application</h2><p>Explore a fictional candidate’s resume and outreach drafts. The public demo uses sample data.</p></div>
-      <div class="demo-grid">
-        <section class="panel" aria-labelledby="input-title">
-          <h3 id="input-title">Application inputs</h3>
-          <dl><dt>Candidate</dt><dd>Alex Rivera</dd><dt>Target role</dt><dd>Data Analyst · Example &amp; Co.</dd><dt>Job description</dt><dd>Build SQL reports and improve recurring reporting workflows.</dd><dt>Hiring team</dt><dd>Riley Chen, Jordan Singh</dd></dl>
-          <button class="button primary" id="load" type="button" aria-controls="results">View sample results</button>
-        </section>
-        <section class="panel result" aria-labelledby="output-title">
-          <h3 id="output-title">Application drafts</h3>
-          <p id="status" role="status">Open the sample results to see how the application was tailored.</p>
-          <div id="results" hidden>
-            <details open><summary>Tailored resume</summary><p>Data analyst with experience building SQL reports and improving reporting workflows.</p><p>Built SQL reports that reduced weekly reporting time by 20%.</p></details>
-            <details><summary>Outreach drafts</summary><div id="messages"></div></details>
-            <details><summary>Resume review</summary><div id="review"></div></details>
-            <a class="button secondary" href="./sample-application.zip" download>Download sample ZIP</a>
-          </div>
-        </section>
-      </div>
-    </div>
-  </section>
-
-  <section class="section shell" id="implementation" aria-labelledby="setup-title">
-    <div class="section-heading"><p class="eyebrow">Implementation</p><h2 id="setup-title">Run RoleCraft on your computer</h2><p>Your n8n workflow sends real application data to Ollama locally. It uses separate model calls for the resume and outreach, then validates and packages the drafts.</p></div>
-    <ol class="workflow" aria-label="Workflow architecture"><li>Form submission</li><li>PDF text extraction</li><li>Two Ollama calls</li><li>Validate and export</li></ol>
-    <ol class="steps">
-      <li><h3>Install the prerequisites</h3><p>Install Git, <a href="https://docs.docker.com/desktop/">Docker Desktop</a>, and <a href="https://ollama.com/download">Ollama</a>. Start Docker Desktop and Ollama.</p></li>
-      <li><h3>Clone and start the project</h3><div class="terminal"><div class="terminal-bar"><span>Terminal</span><button id="copy" type="button">Copy commands</button></div><pre><code id="commands">git clone https://github.com/PrithviHL/rolecraft.git
-cd rolecraft
-ollama pull qwen2.5:3b
-docker compose up -d</code></pre></div><p id="copy-status" role="status"></p></li>
-      <li><h3>Import the n8n workflow</h3><p>Go to <a href="http://localhost:5678/">localhost:5678</a> and set up the local owner account if prompted. Create a workflow, choose <strong>Import from File</strong>, select <code>recruiting-workflow.json</code>, and save.</p></li>
-      <li><h3>Submit and review</h3><p>Click <strong>Execute workflow</strong> to open the test form. Upload a PDF with selectable text, paste the job description, and add hiring-team names. Review the Word resume and outreach drafts before sending anything. Publish the workflow in n8n to use the local production form.</p><a class="button secondary" href="http://localhost:5678/form/recruiting-drafts">Open local production form</a></li>
-    </ol>
-  </section>
+<header><div class="shell nav"><a class="wordmark" href="./"><span class="mark" aria-hidden="true">R</span> RoleCraft</a><a href="https://github.com/PrithviHL/rolecraft">View source</a></div></header>
+<main class="shell">
+<section class="hero" aria-labelledby="title">
+<div><p class="eyebrow">Resume &amp; outreach workspace</p><h1 id="title">Write for the role<br>you want.</h1><p class="intro">Tailor a resume to a job description and prepare a personal message for each member of the hiring team.</p></div>
+<div class="local"><h2>Run with your own resume</h2><p>Start n8n and Ollama on your computer, then open your RoleCraft form. Your resume is processed locally.</p><a class="button secondary" href="http://localhost:5678/form/recruiting-drafts">Open local form</a><a class="setup-link" href="https://github.com/PrithviHL/rolecraft#run-locally-on-a-mac">Local setup</a></div>
+</section>
+<section class="workspace" aria-labelledby="demo-title">
+<div class="workspace-head"><div><h2 id="demo-title">Try a sample application</h2><p>This demo uses fictional inputs and example outputs.</p></div></div>
+<div class="grid">
+<section class="panel" aria-labelledby="input-title">
+<h3 id="input-title">Application inputs</h3>
+<dl><dt>Candidate</dt><dd>Alex Rivera</dd><dt>Target role</dt><dd>Data Analyst · Example &amp; Co.</dd><dt>Job description</dt><dd>Build SQL reports and improve recurring reporting workflows.</dd><dt>Hiring team</dt><dd>Riley Chen, Jordan Singh</dd></dl>
+<button class="button primary" id="load" type="button">View sample results</button>
+</section>
+<section class="panel result" aria-labelledby="output-title">
+<h3 id="output-title">Application drafts</h3>
+<p id="status" role="status">View the sample results to inspect the resume and messages.</p>
+<div id="results" hidden>
+<details open><summary>Tailored resume</summary><p>Data analyst with experience building SQL reports and improving reporting workflows.</p><p>Built SQL reports that reduced weekly reporting time by 20%.</p></details>
+<details><summary>Outreach drafts</summary><div id="messages"></div></details>
+<details><summary>Resume review</summary><div id="review"></div></details>
+<a class="button secondary" href="./sample-application.zip" download>Download sample ZIP</a>
+</div>
+</section>
+</div>
+</section>
 </main>
-<footer><div class="shell footer"><span>RoleCraft</span><a href="https://github.com/PrithviHL/rolecraft">Source and troubleshooting</a></div></footer>
+<footer class="shell">Built with n8n, Ollama, and structured prompts.</footer>
 </body>
 </html>

@@ -26,13 +26,3 @@ loadButton.addEventListener('click', async () => {
     loadButton.disabled = false;
   }
 });
-
-document.querySelector('#copy').addEventListener('click', async () => {
-  const status = document.querySelector('#copy-status');
-  try {
-    await navigator.clipboard.writeText(document.querySelector('#commands').textContent);
-    status.textContent = 'Commands copied.';
-  } catch {
-    status.textContent = 'Select the command text to copy it manually.';
-  }
-});
